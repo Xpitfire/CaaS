@@ -1,0 +1,67 @@
+USE caas;
+
+CREATE TABLE IF NOT EXISTS authtype (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  CONSTRAINT authtype_pk PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS userstatus (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  CONSTRAINT userstatus_pk PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS person (
+  id VARCHAR(12) NOT NULL,
+  username VARCHAR(15) NOT NULL UNIQUE,
+  password VARCHAR(120) NOT NULL,
+  authType INT NOT NULL,
+  userStatus INT NOT NULL,
+  firstName VARCHAR(20),
+  lastName VARCHAR(20),
+  profilePicturePath VARCHAR(60),
+  email VARCHAR(50),
+  CONSTRAINT person_pk PRIMARY KEY (id),
+  CONSTRAINT person_authType_fk FOREIGN KEY (authType) REFERENCES authtype (id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT person_userStatus_fk FOREIGN KEY (userStatus) REFERENCES userstatus (id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS category (
+  name VARCHAR(20) NOT NULL,
+  CONSTRAINT category_pk PRIMARY KEY (name)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS weekday (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(10) NOT NULL,
+  CONSTRAINT weekday_pk PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS meal (
+  name VARCHAR(40) NOT NULL,
+  category VARCHAR(20) NOT NULL,
+  weekday INT NOT NULL,
+  price DOUBLE,
+  CONSTRAINT meal_pk PRIMARY KEY (name, category, weekday),
+  CONSTRAINT meal_category_fk FOREIGN KEY (category) REFERENCES category (name) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT meal_weekday_fk FOREIGN KEY (weekday) REFERENCES weekday (id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS orderstatus (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(12) NOT NULL,
+  CONSTRAINT orderstatus_pk PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS `order` (
+  orderId INT NOT NULL,
+  personId VARCHAR(12) NOT NULL,
+  meal VARCHAR(40) NOT NULL,
+  deliverHour CHAR(5) NOT NULL,
+  orderStatus INT NOT NULL,
+  CONSTRAINT order_pk PRIMARY KEY (orderId, personId, meal),
+  CONSTRAINT order_personId_fk FOREIGN KEY (personId) REFERENCES person (id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT order_meal_fk FOREIGN KEY (meal) REFERENCES meal (name) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+

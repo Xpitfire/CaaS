@@ -1,0 +1,138 @@
+.uiobject-layout {
+    -fx-text-alignment: center;
+}
+
+.title {
+    -fx-font-size: 5em;
+}
+
+.login-pane {
+    -fx-padding: 10 0 0 320;
+}
+
+.button {
+    -fx-background-color: #bdc3c7;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0,1,2,0;
+    -fx-font-size: 12px;
+    -fx-padding: 8 18 8 18;
+}
+
+.button:hover {
+    -fx-text-fill: white;
+    -fx-background-color: #6BB9F0;
+}
+
+.button:focused {
+    -fx-text-fill: white;
+    -fx-background-color: #6BB9F0;
+}
+
+.button:pressed {
+    -fx-text-fill: white;
+    -fx-background-color: #19b5fe;
+}
+
+.input-field {
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-border-width: 1;
+    -fx-border-color: darkgray;
+}
+
+.button-confirm {
+    -fx-text-fill: white;
+    -fx-background-color: #049372;
+    -fx-padding: 10 100 10 100;
+}
+
+.button-confirm:hover {
+    -fx-background-color: #1ba39c;
+}
+
+.button-confirm:focused {
+    -fx-background-color: #1ba39c;
+}
+
+.button-confirm:pressed {
+    -fx-background-color: #049372;
+}
+
+.button-cancel {
+    -fx-text-fill: white;
+    -fx-background-color: #f22613;
+}
+
+.button-cancel:hover {
+    -fx-background-color: #f64747;
+}
+
+.button-cancel:focused {
+    -fx-background-color: #f64747;
+}
+
+.button-cancel:pressed {
+    -fx-background-color: #cf000f;
+}
+
+.alert-info {
+    -fx-text-fill: red;
+}
+
+.selection {
+    -fx-text-fill: black;
+    -fx-font-size: 2em;
+    -fx-background-color: transparent;
+}
+
+.selection:hover {
+    -fx-text-fill: black;
+    -fx-font-weight: bolder;
+    -fx-background-color: transparent;
+}
+
+.selection:selected {
+    -fx-text-fill: black;
+    -fx-font-weight: bolder;
+    -fx-background-color: transparent;
+}
+
+.selection:focused {
+    -fx-text-fill: black;
+    -fx-font-weight: bolder;
+    -fx-background-color: transparent;
+}
+
+.selection:pressed {
+    -fx-text-fill: black;
+    -fx-font-weight: bolder;
+    -fx-background-color: transparent;
+}
+
+.label {
+    -fx-min-width: 100;
+}
+
+.table-view {
+    -fx-fill: black;
+    -fx-text-background-color: black;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: white;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+
+.table-row-cell:hover {
+    -fx-fill: black;
+    -fx-text-background-color: black;
+}
+
+.table-row-cell:selected {
+    -fx-fill: black;
+    -fx-background-color: #89c4f4;
+    -fx-text-background-color: black;
+}
